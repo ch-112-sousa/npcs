@@ -22,9 +22,12 @@ const App: React.FC = () => {
     setResultado(filtrado);
   };
 
-  const handleNpcClick = (id:number) => {    
+  const handleNpcClick = (id:number) => {   
+    console.log(resultado);
+    
     const encontrado = resultado.find((x)=> x.id === id);
     setSelected(encontrado);
+    console.log(encontrado);
   };
 
   return (
@@ -33,13 +36,15 @@ const App: React.FC = () => {
 
       <h1 className='display-5'>NPCs</h1>
       <div className='row'>
-        <div className='col-sm-3'>
+        <div className='col-sm-4'>
           <SearchBar onSearch={handleSearch} />
-          <ul>
+          <br/>
+          <ul className='list-unstyled list-group-item'>
           {resultado.map((item, index) => (
           <li key={index}>
             <button 
-                className='btn btn-primary'
+                className='btn btn-primary form-control'
+                style={{ marginBottom: '10px' }}
                 onClick={() => handleNpcClick(item.id)}
               >
               {`${item.nome} ${item.sobrenome}`}
@@ -48,7 +53,7 @@ const App: React.FC = () => {
           ))}
           </ul>
         </div>
-        <div className='col-sm-9'>
+        <div className='col-sm-6 alert alert-dark'>
           <NpcComponent  npc={selected} />
         </div>
       </div>

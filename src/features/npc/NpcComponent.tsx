@@ -7,24 +7,16 @@ type Props = {
 };
 
 const NpcComponent: React.FC<Props> = ({npc}) => {
-
+ 
   if (!npc) return <div>Selecione um NPC</div>;
   
-  return 
-  (
- 
-        <section className="accordion">
-          <nav className='accordion-item'>
-            {npc?.nome} {npc?.sobrenome}, {npc?.raca} - {npc?.classe}
-          </nav>
-          <p className="alinhamento">
-                  
-          </p>
-          <p className="linguas">
-            
-          </p>
-      </section>
+  return (
+    <div>
+      <h6><b>{npc.nome} {npc.sobrenome}</b>, {npc.raca} - {npc.classe}</h6>
+      
+    </div>
   );
 };
+ 
 
 export default NpcComponent;
