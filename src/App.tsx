@@ -9,6 +9,9 @@ import Paginate from './features/paginate/Paginate';
 
 const App: React.FC = () => {
 
+
+
+
   const [nomeIsAsc, setNomeIsAsc] = React.useState<boolean>(true);
   const [classeIsAsc, setClasseIsAsc] = React.useState<boolean>(true);
   const [racaIsAsc, setRacaIsAsc] = React.useState<boolean>(true);
@@ -62,6 +65,12 @@ const App: React.FC = () => {
         setRacaIsAsc(nextRacaIsAsc);
   }
   
+
+  function removerAcentos(texto: string): string {
+    return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
+
   const [resultado, setResultado] = React.useState<INpc[]>(npcs.NPCs);
 
   const [currentPage, setCurrentPage] = React.useState<number>(1);
@@ -75,10 +84,9 @@ const App: React.FC = () => {
   const handleSearch = (texto: string) => {    
     const filtrado: INpc[] = npcs.NPCs.filter((item) => 
     { 
-    return item.classe.toLowerCase().startsWith(texto) ||
-      item.raca.toLowerCase().startsWith(texto) || 
-      item.nome.toLowerCase().startsWith(texto) ||
-      item.sobrenome.toLowerCase().startsWith(texto);
+    return removerAcentos(item.classe.toLowerCase()).startsWith(removerAcentos(texto.toLocaleLowerCase())) ||
+      removerAcentos(item.raca.toLowerCase()).startsWith(removerAcentos(texto.toLocaleLowerCase())) || 
+      removerAcentos(item.nome.toLowerCase()).startsWith(removerAcentos(texto.toLowerCase()));      
     })
 
     setResultado(filtrado);
