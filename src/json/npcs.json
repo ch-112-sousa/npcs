@@ -1,0 +1,27 @@
+{
+    "NPCs":
+    [
+        {         
+            "id":1,  
+            "nome": "Grim", 
+            "sobrenome": "Amblecrown", 
+            "raca": "Humano",  
+            "classe":"Clérigo de Tymora 2",  
+            "alinhamento": "Leal e Neutro", 
+            "linguas": "Comum",
+            "atributos": "For*:18(+3), Des:16(+3), Con*:18(+4), Int:10(0), Sab:14(+2), Car:14(+2)",
+            "antecedente" :"Criminoso - Contrato Criminal",                  
+            "TP": "A melhor maneira de me levar a fazer algo é dizendo que eu não posso fazer.",
+            "I": "Liberdade. Correntes foram feitas para serem partidas, assim como aqueles que as forjaram. (Caótico) ",
+            "V": "Algo importante foi roubado de mim, e eu vou recuperá-lo.",
+            "D": "Um inocente foi preso por um crime que eu cometi. Por mim tudo bem.",       
+            "prof":"+2", 
+            "PVs": "27 (1d12+4)", 
+            "iniciativa":"+3", 
+            "pericias": "Enganação +4, Furtividade +5, Intimidação +5, Atletismo +5",
+            "armadura":"Roupas de Viajante CA:17",
+            "escudo": "Escudo de Madeira +2CA",
+            "armas": "Machado Grande [1d20+5] => Dano corte [1d8+3]"
+        }
+    ]    
+}  

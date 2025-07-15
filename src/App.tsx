@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import React from 'react';
+import npcs from './json/npcs.json';
+import SearchBar from './features/searchbar/SearchBar';
+import NpcComponent from './features/npc/NpcComponent';
+import type { INpc } from './models/INpc';
 
-function App() {
-  const [count, setCount] = useState(0)
+
+ 
+
+const App: React.FC = () => {
+
+  const [selected, setSelected]= React.useState<INpc>();
+  const [resultado, setResultado] = React.useState<INpc[]>([]);
+  const handleSearch = (texto: string) => {
+    const filtrado: INpc[] = npcs.NPCs.filter((item) => 
+    {
+      const nomeCompleto:string = `${item.nome} ${item.sobrenome}`;
+      return nomeCompleto.toLocaleLowerCase().includes(texto.toLocaleLowerCase());
+    });
+
+    setResultado(filtrado);
+  };
+
+  const handleNpcClick = (id:number) => {    
+    const encontrado = resultado.find((x)=> x.id === id);
+    setSelected(encontrado);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+     
+    <div className='container-sm'>
 
-export default App
+      <h1 className='display-5'>NPCs</h1>
+      <div className='row'>
+        <div className='col-sm-3'>
+          <SearchBar onSearch={handleSearch} />
+          <ul>
+          {resultado.map((item, index) => (
+          <li key={index}>
+            <button 
+                className='btn btn-primary'
+                onClick={() => handleNpcClick(item.id)}
+              >
+              {`${item.nome} ${item.sobrenome}`}
+            </button>
+          </li>
+          ))}
+          </ul>
+        </div>
+        <div className='col-sm-9'>
+          <NpcComponent  npc={selected} />
+        </div>
+      </div>
+    </div>
+    
+  );
+};
+
+export default App;

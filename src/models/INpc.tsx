@@ -1,0 +1,22 @@
+export type INpc = {
+  id: number;
+  nome: string;
+  sobrenome: string;
+  raca: string;
+  classe: string;
+  alinhamento: string;
+  linguas: string;
+  atributos: string;
+  antecedente: string;
+  TP: string;
+  I: string;
+  V: string;
+  D: string;
+  prof: string;
+  PVs: string;
+  iniciativa: string;
+  pericias: string;
+  armadura: string;
+  escudo: string;
+  armas: string;
+};
