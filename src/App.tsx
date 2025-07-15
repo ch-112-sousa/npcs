@@ -9,9 +9,6 @@ import Paginate from './features/paginate/Paginate';
 
 const App: React.FC = () => {
 
-
-
-
   const [nomeIsAsc, setNomeIsAsc] = React.useState<boolean>(true);
   const [classeIsAsc, setClasseIsAsc] = React.useState<boolean>(true);
   const [racaIsAsc, setRacaIsAsc] = React.useState<boolean>(true);
