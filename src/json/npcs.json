@@ -1,0 +1,57 @@
+{
+    "NPCs":
+    [
+        {         
+            "id":1,  
+            "nome": "Grim", 
+            "sobrenome": "Amblecrown", 
+            "raca": "Humano",  
+            "classe":"Clérigo de Tymora 2",  
+            "alinhamento": "Leal e Neutro", 
+            "linguas": "Comum",
+            "for":"+2",
+            "des":"+1",
+            "con":"+3",
+            "int":"+2",
+            "sab":"+1",
+            "car":"+4",
+            "antecedente" :"Charlatão - Identidade Falsa",                  
+            "TP": "Bajulação é meu truque predileto para conseguir o que eu quero.",
+            "I": "Aspiração. Eu estou determinado a fazer algo por mim mesmo. (Qualquer)",
+            "V": "Eu devo tudo ao meu mentor - uma pessoa terrível que, provavelmente está apodrecendo na cadeia em algum lugar.",
+            "D": "Estou sempre com dividas. Eu gasto meus lucros ilícitos com luxurias decadentes mais rápido do que os ganho...",       
+            "CA":"16", 
+            "PVs": "19 (1d8+3)", 
+            "pericias": "Enganação +6, Prestidigitação +3, Persuasão +6, História +4",
+            "armadura":"Cota de Malha",
+            "escudo": "Escudo de Madeira",
+            "armas": "Martelo de Guerra [1d20+4] => Dano cont [1d8+2]"
+        },
+        {         
+            "id":2,  
+            "nome": "Bran", 
+            "sobrenome": "Stormwind", 
+            "raca": "Humano",  
+            "classe":"Bárbaro 2",  
+            "alinhamento": "Caótico e Neutro", 
+            "linguas": "Comum",
+            "for":"+3",
+            "des":"+3",
+            "con":"+4",
+            "int":"0",
+            "sab":"+2",
+            "car":"+2",
+            "antecedente" :"Criminoso - Contrato Criminal",                  
+            "TP": "A melhor maneira de me levar a fazer algo é dizendo que eu não posso fazer.",
+            "I": "Liberdade. Correntes foram feitas para serem partidas, assim como aqueles que as forjaram. (Caótico)",
+            "V": "Algo importante foi roubado de mim, e eu vou recuperá-lo.",
+            "D": "Um inocente foi preso por um crime que eu cometi. Por mim tudo bem.",       
+            "CA":"19", 
+            "PVs": "27 (1d12+4)", 
+            "pericias": "Enganação +4, Furtividade +5, Intimidação +5, Atletismo +5",
+            "armadura":"Roupas de Viajante",
+            "escudo": "Escudo de Madeira",
+            "armas": "Machado Grande [1d20+5] => Dano corte [1d8+3]"
+        }
+    ]    
+}  

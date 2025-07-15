@@ -67,3 +67,8 @@ export default tseslint.config([
   },
 ])
 ```
+
+
+#
+# //git config --global user.name "Carlos H."
+# //git config --global user.email ch.112.sousa@gmail.com
