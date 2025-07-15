@@ -19,7 +19,8 @@ const NpcComponent: React.FC<Props> = ({npc}) => {
       
         <div className='col-sm-5' style={{verticalAlign: "top"}}>
            
-            <table className='table table-active'>
+            <table className='table table-primary'>
+              <thead>
               <tr>
                   <th>FOR</th>
                   <th>DES</th>
@@ -28,6 +29,8 @@ const NpcComponent: React.FC<Props> = ({npc}) => {
                   <th>SAB</th>
                   <th>CAR</th>
               </tr>
+              </thead>
+              <tbody>
               <tr>
                   <td>{npc.for}</td>
                   <td>{npc.des}</td>
@@ -36,6 +39,7 @@ const NpcComponent: React.FC<Props> = ({npc}) => {
                   <td>{npc.sab}</td>
                   <td>{npc.car}</td>
               </tr>
+              </tbody>
             </table>
             <p>
               <b>Perícias:</b><br/>

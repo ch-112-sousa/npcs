@@ -8,29 +8,94 @@ import Paginate from './features/paginate/Paginate';
 
 
 const App: React.FC = () => {
+
+  const [nomeIsAsc, setNomeIsAsc] = React.useState<boolean>(true);
+  const [classeIsAsc, setClasseIsAsc] = React.useState<boolean>(true);
+  const [racaIsAsc, setRacaIsAsc] = React.useState<boolean>(true);
+
+  const orderByNome = () => {
+  const nextNomeIsAsc = !nomeIsAsc;
+
+  const sorted = [...resultado].sort((a, b) => {
+    const nomeCompare = nextNomeIsAsc
+      ? a.nome.localeCompare(b.nome)
+      : b.nome.localeCompare(a.nome);
+
+    
+      return nomeCompare;    
+  });
+
+  setResultado(sorted);
+  setNomeIsAsc(nextNomeIsAsc);
+};
+
+  const orderByClasse = () => {
+        const nextClasseIsAsc = !classeIsAsc;
+
+        const sorted = [...resultado].sort((a, b) => {
+         
+         const classeCompare = nextClasseIsAsc
+            ? a.classe.localeCompare(b.classe)
+            : b.classe.localeCompare(a.classe);
+
+         
+            return classeCompare;         
+        });
+
+        setResultado(sorted);
+        setClasseIsAsc(nextClasseIsAsc);
+  }
+
+   const orderByRaca = () => {
+        const nextRacaIsAsc = !racaIsAsc;
+
+        const sorted = [...resultado].sort((a, b) => {
+         
+         const racaCompare = nextRacaIsAsc
+            ? a.raca.localeCompare(b.raca)
+            : b.raca.localeCompare(a.raca);
+
+            return racaCompare;
+        });
+
+        setResultado(sorted);
+        setRacaIsAsc(nextRacaIsAsc);
+  }
+  
   const [resultado, setResultado] = React.useState<INpc[]>(npcs.NPCs);
 
   const [currentPage, setCurrentPage] = React.useState<number>(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 8;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = resultado.slice(indexOfFirstItem, indexOfLastItem);
 
   const [selected, setSelected]= React.useState<INpc>();
-  const handleSearch = (texto: string) => {
-    
+  const handleSearch = (texto: string) => {    
     const filtrado: INpc[] = npcs.NPCs.filter((item) => 
     { 
-      return item.classe.toLowerCase().startsWith(texto) ||
-             item.raca.toLowerCase().startsWith(texto) || 
-             item.nome.toLowerCase().startsWith(texto) ||
-             item.sobrenome.toLowerCase().startsWith(texto);
-    });
+    return item.classe.toLowerCase().startsWith(texto) ||
+      item.raca.toLowerCase().startsWith(texto) || 
+      item.nome.toLowerCase().startsWith(texto) ||
+      item.sobrenome.toLowerCase().startsWith(texto);
+    })
 
     setResultado(filtrado);
   };
 
+  const handleSortNpcClick = () =>{
+    orderByNome();
+  }
+
+  const handleSortClasseClick = () =>{
+    orderByClasse();
+  }
+
+  const handleSortRacaClick = () =>{
+    orderByRaca();
+  }
+ 
   const handleNpcClick = (id:number) => {   
     const encontrado = resultado.find((x)=> x.id === id);
     setSelected(encontrado);
@@ -51,10 +116,9 @@ const App: React.FC = () => {
             
             <thead>
               <tr className='row'>
-
-                <th className='col-sm-4'>NPC</th>
-                <th className='col-sm-4'>Classe</th>
-                <th className='col-sm-4'>Raça</th>
+                <th className='col-sm-4' onClick={handleSortNpcClick}>NPC{nomeIsAsc ? '🔼' : '🔽'}</th>
+                <th className='col-sm-4' onClick={handleSortClasseClick}>Classe {classeIsAsc ? '🔼' : '🔽'}</th>
+                <th className='col-sm-4' onClick={handleSortRacaClick}>Raça {racaIsAsc ? '🔼' : '🔽'}</th>
               </tr>
             </thead>          
             <tbody>
