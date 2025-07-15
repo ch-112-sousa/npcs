@@ -14,21 +14,14 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   };
 
   return (
-    <div className='col-12'>
       <input
+        id="search-bar-id"
         type="text"
         placeholder="Pesquise aqui..."
         value={query}
         onChange={handleInputChange}
-        className='form-control form-text'
-        // style={{
-        //   padding: '10px',
-        //   width: '300px',
-        //   borderRadius: '5px',
-        //   border: '1px solid #ccc',
-        // }}
+        className='form-control form-text'        
       />
-    </div>
   );
 };
 

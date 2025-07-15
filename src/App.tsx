@@ -103,43 +103,43 @@ const App: React.FC = () => {
 
   return (
      
-    <div className='container-sm'>
-
-      <h1 className='display-5'>NPCs</h1>
+    <div className='container container-sm'>
       <div className='row'>
         <div className='col-sm-4'>
-          <SearchBar onSearch={handleSearch} />
+            <h1 className='display-5'>NPCs</h1>
+            <SearchBar onSearch={handleSearch} />
         </div>
-        
-        <div className='col-sm-12'>
-          <table className='table table-responsive'>
-            
+        </div>
+        <div className='row'>
+          <div className='col-sm-10'>
+
+            <table className='table table-responsive'>            
             <thead>
-              <tr className='row'>
+              <tr  >
                 <th className='col-sm-4' onClick={handleSortNpcClick}>NPC{nomeIsAsc ? '🔼' : '🔽'}</th>
-                <th className='col-sm-4' onClick={handleSortClasseClick}>Classe {classeIsAsc ? '🔼' : '🔽'}</th>
-                <th className='col-sm-4' onClick={handleSortRacaClick}>Raça {racaIsAsc ? '🔼' : '🔽'}</th>
+                <th className='col-sm-3' onClick={handleSortClasseClick}>Classe {classeIsAsc ? '🔼' : '🔽'}</th>
+                <th className='col-sm-3' onClick={handleSortRacaClick}>Raça {racaIsAsc ? '🔼' : '🔽'}</th>
               </tr>
             </thead>          
             <tbody>
                 {currentItems.length > 0 ? (
                   currentItems.map((item, index) => (
                     <tr
-                      key={index}
-                      className={`row ${item?.id === selected?.id ? 'table-primary' : ''}`}
-                      onClick={() => handleNpcClick(item.id)}
+                    key={index}
+                    className={`${item?.id === selected?.id ? 'table-primary' : ''}`}
+                    onClick={() => handleNpcClick(item.id)}
                     >
                       <td className="col-sm-4">{`${item.nome} ${item.sobrenome}`}</td>
-                      <td className="col-sm-4">{item.classe}</td>
-                      <td className="col-sm-4">{item.raca}</td>
+                      <td className="col-sm-3">{item.classe}</td>
+                      <td className="col-sm-3">{item.raca}</td>
                     </tr>
                   ))
                 ) : (
                   <tr
-                      key={0}
-                      onClick={() => handleNpcClick(0)}
-                    >
-                    <td colSpan={2}>NPC não encontrado.</td>
+                  key={0}
+                  onClick={() => handleNpcClick(0)}
+                  >
+                    <td colSpan={3}>NPC não encontrado.</td>
                   </tr>
                 )}
               </tbody>
@@ -150,17 +150,15 @@ const App: React.FC = () => {
               currentPage={currentPage}
               totalPages={Math.ceil(resultado.length / itemsPerPage)}
               onPageChange={(page) => setCurrentPage(page)}
-            />
-             
+              />             
+            </div>
       </div>
- 
-        <div className='col-sm-12 alert alert-primary'>
+      <div className='row'>
+        <div className='col-sm-10' >
           <NpcComponent  npc={selected} />
-          
         </div>
-      </div>
-    </div>
-    
+      </div>    
+    </div>    
   );
 };
 
